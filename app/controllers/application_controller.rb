@@ -23,22 +23,22 @@ class ApplicationController < Sinatra::Base
             email: params["email"],
             password: params["password"])
         #then it saved and giving an ID.
-      @user.save
-      session[:id] = @user.id
+    @user.save
+    session[:id] = @user.id
     redirect '/users/home'  # this is in another folder
   end
 
-  get '/sessions/login' do  #render the log in form
+  get '/sessions/login' do  #render the log in form if our user is logging in
     erb :'sessions/login' # this is located in another folder
   end
 
-  post '/sessions/login' do
+  post '/sessions/login' do # if our user is logging in
     #handles logged in input of user from the params / Match that infor
     # with existing entries in the user database.
   @user = User.find_by(email: params["email"], password: params["password"])
   session[:id] = @user.id
    #if  entrie matches, user is logged in
-    redirect '/users/home'
+    redirect '/users/home'   # routes to user logout page
   end
 
   get '/sessions/logout' do
