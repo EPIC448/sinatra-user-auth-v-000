@@ -29,7 +29,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/sessions/login' do  #render the log in form if our user is logging in
-    erb :'sessions/login' # this is located in another folder
+    erb :'/sessions/login' # this is located in another folder
   end
 
   post '/sessions/login' do # if our user is logging in
